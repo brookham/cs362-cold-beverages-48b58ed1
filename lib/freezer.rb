@@ -2,7 +2,7 @@ class Freezer
 
   ROOM_TEMPERATURE = 70
 
-  attr_reader :capacity, :temperature
+  attr_reader :capacity, :temperature, :power, :contents
 
   def initialize(capacity = 100)
     @capacity = capacity
@@ -24,7 +24,7 @@ class Freezer
   end
 
   def remaining_capacity
-    capacity - @contents.map(&:volume).reduce(:+).to_i
+    self.capacity - @contents.map(&:volume).reduce(:+).to_i
   end
 
   def set_level(level)
